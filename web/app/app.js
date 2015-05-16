@@ -10,7 +10,11 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
         controller: "homeCtrl"
     })
         .state("About", {
-            url: "/about",
-            templateUrl: "app/views/about.html"
+        url: "/about",
+        templateUrl: "app/views/about.html"
+    })
+        .state("Editor", {
+            url: "/editor",
+            templateUrl: "app/views/editor.html"
         });
 }]);
