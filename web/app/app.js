@@ -15,6 +15,7 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
     })
         .state("Editor", {
             url: "/editor",
-            templateUrl: "app/views/editor.html"
+            templateUrl: "app/views/editor.html",
+			controller: "editorCtrl"
         });
 }]);

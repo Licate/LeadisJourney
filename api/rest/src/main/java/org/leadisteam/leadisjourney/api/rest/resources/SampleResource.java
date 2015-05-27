@@ -11,4 +11,9 @@ public class SampleResource {
 	{
 		return "Test";
 	}
+	@POST
+	public String yolo()
+	{
+		return ("chat");
+	}
 }

@@ -6,6 +6,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
+import org.leadisteam.leadisjourney.api.rest.filters.ResponseCorsFilter;
 
 public class App 
 {
@@ -25,8 +26,9 @@ public class App
     }
 
 	private static void configJersey(ServletContextHandler contextHandler) {
-		ServletContainer container = new ServletContainer(new ResourceConfig().packages("org.leadisteam.leadisjourney.api.rest.resources").register(JacksonFeature.class));
+		ServletContainer container = new ServletContainer(new ResourceConfig().packages("org.leadisteam.leadisjourney.api.rest.resources").register(JacksonFeature.class).register(ResponseCorsFilter.class));
 		ServletHolder holder = new ServletHolder(container);
 		contextHandler.addServlet(holder, "/*");
+
 	}
 }
