@@ -1,7 +1,7 @@
 app.controller('editorCtrl', ['$scope', '$http', function ($scope, $http) {
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/chrome");
-    editor.getSession().setMode("ace/src-noconflict/c_cpp");
+    editor.setTheme("ace/theme/idle_fingers");
+    editor.getSession().setMode("ace/mode/c_cpp");
 
     $scope.comp = function () {
         var code = editor.getSession().getValue();
