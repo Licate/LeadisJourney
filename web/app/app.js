@@ -4,17 +4,12 @@
 var app = angular.module("leadis", ["ui.router", "ui.bootstrap"]);
 app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when("", "/");
-    $stateProvider.state("Home", {
-        url: "/",
-        templateUrl: "app/views/home.html",
-        controller: "homeCtrl"
-    })
-        .state("About", {
+    $stateProvider.state("About", {
         url: "/about",
         templateUrl: "app/views/about.html"
     })
         .state("Editor", {
-            url: "/editor",
+            url: "/",
             templateUrl: "app/views/editor.html",
 			controller: "editorCtrl"
         });

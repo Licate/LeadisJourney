@@ -2,12 +2,13 @@
 <html ng-app="leadis">
 <head lang="en">
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title></title>
 </head>
 <body>
 <header ng-include="" src="'app/views/header.html'"></header>
-<section ui-view></section>
+<section ui-view class="container-fluid"></section>
 <footer></footer>
 <script src="assets/ace/src-noconflict/ace.js"></script>
 <script src="assets/jquery/jquery-2.1.3.min.js"></script>
@@ -16,7 +17,6 @@
 <script src="assets/angularjs/angularjs-ui-router.js"></script>
 <script src="assets/angularjs/ui-bootstrap-tpls-0.12.1.min.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
-<script type="text/javascript" src="app/controllers/homeCtrl.js"></script>
 <script type="text/javascript" src="app/controllers/editorCtrl.js"></script>
 </body>
 </html>
