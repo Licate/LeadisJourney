@@ -1,70 +1,41 @@
 package org.leadisteam.leadisjourney.api.core;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
 
 public class API {
-
-	public static class CompileRequest {
-		public int user_id;
-		public String[] File;
-		
-		public CompileRequest(int id, String[] files){
-			File = new String[files.length];
-			int i = 0;
-			user_id = id;
-			
-			while (i != files.length){
-				File[i] = files[i];
-				i++;
-			}
-		}
+	
+	public CompileResponse send(CompileRequest obj) {
+		CompileResponse compileResponse = null;
+		HttpClient httpClient = HttpClientBuilder.create().build(); //Use this instead 
+		Gson gson = new Gson();
+        String json = gson.toJson(obj);
+	    try {
+	        HttpPost request = new HttpPost("http://localhost:8080/compile");
+	        StringEntity params =new StringEntity(json);
+	        request.addHeader("content-type", "application/json");
+	        request.setEntity(params);
+	        HttpResponse response = httpClient.execute(request);
+	        HttpEntity e = response.getEntity();
+	        String responseBody = EntityUtils.toString(e);
+	        compileResponse = this.convert(responseBody);
+	        // handle response here...
+	    }catch (Exception ex) {
+	        System.err.println(ex);
+	    }
+	    return compileResponse;
 	}
 	
-	public static class CompileResponse {
-		public String succes;
-		public String warning;
-		public String error;
-	}
-	
-	public void test(CompileRequest Object) throws IOException{
-		
-		Gson gson = new Gson();	/* Objet conversion objet java to Json*/
-        String json = gson.toJson(Object); /* Conversion objet Java en Json */	
-        System.out.println(json);
- 
-        String url = "http://postcatcher.in/catchers/55742118c63ba5030000f6ee"; /* Url requete POST, remplacer par l'addresse du serveur python*/
-        URL obj = new URL(url); /* Conversion string to URL*/
-        HttpURLConnection con = (HttpURLConnection)obj.openConnection(); /* Ouvre la connexion */
-         
-        con.setRequestMethod("POST"); /* Initialise une requete POST */
-        con.setRequestProperty("json", json); /* Header definition donnees envoyees */
-         
-        con.setDoOutput(true); /* Permet l'envoie de donnee du POST */
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream()); /* Ouverture d'un stream + ecriture sur ce stream */
-        wr.flush(); /* Force l'ecriture sur le stream */
-        wr.close(); /* Ferme le stream*/
-         
-        int responseCode = con.getResponseCode(); /* Recuperation retour serveur */
-        System.out.println(responseCode);/* Affichage reponse */
-	}
-	
-	public void response(String jsonString){
-		CompileResponse cr = new CompileResponse();
+	private CompileResponse convert(String jsonString){
 		Gson gson = new Gson();
 		
-		cr = gson.fromJson(jsonString, CompileResponse.class);
-	}
-	
-	public static void main(String[] args) throws IOException {
-    	String[] test =  new String[]{"test code 1","test code 2","test code 3" };
-		CompileRequest obj = new CompileRequest(1, test);
-		
-		API to = new API();
-		to.test(obj);
+		return gson.fromJson(jsonString, CompileResponse.class);
 	}
 }
