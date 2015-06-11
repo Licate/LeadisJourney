@@ -13,18 +13,22 @@ public class API {
 		public int user_id;
 		public String[] File;
 		
-		public CompileRequest(int id, String[] files)
-		{
+		public CompileRequest(int id, String[] files){
 			File = new String[files.length];
 			int i = 0;
 			user_id = id;
 			
-			while (i != files.length)
-			{
+			while (i != files.length){
 				File[i] = files[i];
 				i++;
 			}
 		}
+	}
+	
+	public static class CompileResponse {
+		public String succes;
+		public String warning;
+		public String error;
 	}
 	
 	public void test(CompileRequest Object) throws IOException{
@@ -33,20 +37,27 @@ public class API {
         String json = gson.toJson(Object); /* Conversion objet Java en Json */	
         System.out.println(json);
  
-        String url = "http://postcatcher.in/catchers/55742118c63ba5030000f6ee"; /* Url requete POST*/
+        String url = "http://postcatcher.in/catchers/55742118c63ba5030000f6ee"; /* Url requete POST, remplacer par l'addresse du serveur python*/
         URL obj = new URL(url); /* Conversion string to URL*/
         HttpURLConnection con = (HttpURLConnection)obj.openConnection(); /* Ouvre la connexion */
          
-        con.setRequestMethod("POST"); /* Initialise une requï¿½te POST */
+        con.setRequestMethod("POST"); /* Initialise une requete POST */
         con.setRequestProperty("json", json); /* Header definition donnees envoyees */
          
-        con.setDoOutput(true); /* Permet lï¿½envoie de donnï¿½e du POST */
+        con.setDoOutput(true); /* Permet l'envoie de donnee du POST */
         DataOutputStream wr = new DataOutputStream(con.getOutputStream()); /* Ouverture d'un stream + ecriture sur ce stream */
         wr.flush(); /* Force l'ecriture sur le stream */
         wr.close(); /* Ferme le stream*/
          
         int responseCode = con.getResponseCode(); /* Recuperation retour serveur */
         System.out.println(responseCode);/* Affichage reponse */
+	}
+	
+	public void response(String jsonString){
+		CompileResponse cr = new CompileResponse();
+		Gson gson = new Gson();
+		
+		cr = gson.fromJson(jsonString, CompileResponse.class);
 	}
 	
 	public static void main(String[] args) throws IOException {
