@@ -1,4 +1,5 @@
 package org.leadisteam.leadisjourney.api.core;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -6,8 +7,7 @@ import java.net.URL;
 
 import com.google.gson.Gson;
 
-
-public class Test {
+public class API {
 
 	public static class CompileRequest {
 		public int user_id;
@@ -26,9 +26,9 @@ public class Test {
 			}
 		}
 	}
-
-	public void test(CompileRequest Object) throws IOException
-	{
+	
+	public void test(CompileRequest Object) throws IOException{
+		
 		Gson gson = new Gson();	/* Objet conversion objet java to Json*/
         String json = gson.toJson(Object); /* Conversion objet Java en Json */	
         System.out.println(json);
@@ -48,13 +48,12 @@ public class Test {
         int responseCode = con.getResponseCode(); /* Recuperation retour serveur */
         System.out.println(responseCode);/* Affichage reponse */
 	}
-
-        public static void main(String[] args) throws IOException {
-        	String[] test =  new String[]{"test code 1","test code 2","test code 3" };
-    		CompileRequest obj = new CompileRequest(1, test);
-    		
-    		Test to = new Test();
-    		to.test(obj);
-    	}
+	
+	public static void main(String[] args) throws IOException {
+    	String[] test =  new String[]{"test code 1","test code 2","test code 3" };
+		CompileRequest obj = new CompileRequest(1, test);
+		
+		API to = new API();
+		to.test(obj);
 	}
-
+}
