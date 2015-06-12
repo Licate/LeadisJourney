@@ -1,26 +1,26 @@
 package org.leadisteam.leadisjourney.api.core;
 
 public class CompileResponse {
-	private boolean succes;
-	private String[] warning;
-	private String[] error;
+	private boolean success;
+	private String[] warnings;
+	private String[] errors;
 	
-	public String[] getWarning() {
-		return warning;
+	public String[] getWarnings() {
+		return warnings;
 	}
-	public void setWarning(String[] warning) {
-		this.warning = warning;
+	public void setWarnings(String[] warnings) {
+		this.warnings = warnings;
 	}
-	public String[] getError() {
-		return error;
+	public String[] getErrors() {
+		return errors;
 	}
-	public void setError(String[] error) {
-		this.error = error;
+	public void setErrors(String[] errors) {
+		this.errors = errors;
 	}
-	public boolean isSucces() {
-		return succes;
+	public boolean isSuccess() {
+		return success;
 	}
-	public void setSucces(boolean succes) {
-		this.succes = succes;
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 }

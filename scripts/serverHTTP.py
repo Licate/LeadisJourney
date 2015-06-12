@@ -45,10 +45,10 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
         if None != re.search('/compile/*', self.path):
             ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
             print "ctype = %s", ctype
-            if ctype == 'compilator/json':
+            if ctype == 'application/json':
                 length = int(self.headers.getheader('content-length'))
                 data = json.loads(self.rfile.read(length))
-                doEverything(data["id_user"], data["code"])
+                doEverything(data["userId"], data["files"])
             else:
                 data = {}
                 self.send_response(200)

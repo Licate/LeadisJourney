@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/LeadisJourney.iml" filepath="$PROJECT_DIR$/.idea/LeadisJourney.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/core/core.iml" filepath="$PROJECT_DIR$/api/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/rest/rest.iml" filepath="$PROJECT_DIR$/api/rest/rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/services/services.iml" filepath="$PROJECT_DIR$/api/services/services.iml" />
     </modules>
   </component>
 </project>
