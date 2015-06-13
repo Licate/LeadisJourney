@@ -12,8 +12,8 @@ import os
 def directoryUser(user):
     if (os.path.exists(str("Folder_User_" + str(user)))):
         event = subprocess.Popen(str(workDirectory + "/rm *"),
-                                 shell = True, stdin = subprocess.PIPE, stdout = f, stderr = f)
-        output = event.communicate() 
+                                 shell = True, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        out, err = event.communicate() 
         return
     else:
         os.makedirs(str("Folder_User_" + str(user)))
@@ -29,15 +29,22 @@ def createFiles(user, fileList):
         
 def compileFiles(user):
     workDirectory = str("Folder_User_" + str(user))
-    f = open(str(workDirectory + "/log.txt"), 'w')
     event = subprocess.Popen(str("g++ " + workDirectory + "/*.cpp -o " + workDirectory + "/bin"),
-                             shell = True, stdin = subprocess.PIPE, stdout = f, stderr = f)
-    output = event.communicate()
+                             shell = True, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    out, err = event.communicate()
+    error = []
+    success = False
+    warning = []
+    if (err == ''):
+        success = True
+    else:
+        error[0] = err
+    return (dict[('success', success), ('warning', warning), ('error', error)])
 
 def doEverything(user, fileList):
     directoryUser(user)
     createFiles(user, fileList)
-    compileFiles(user)
+    return (compileFiles(user))
         
 class HTTPRequestHandler(BaseHTTPRequestHandler):
 
@@ -48,7 +55,8 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             if ctype == 'application/json':
                 length = int(self.headers.getheader('content-length'))
                 data = json.loads(self.rfile.read(length))
-                doEverything(data["userId"], data["files"])
+                response = doEverything(data["userId"], data["files"])
+                json.dump(response, self.wfile)
             else:
                 data = {}
                 self.send_response(200)
