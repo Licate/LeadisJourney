@@ -29,7 +29,7 @@ def createFiles(user, fileList):
         
 def compileFiles(user):
     workDirectory = str("Folder_User_" + str(user))
-    event = subprocess.Popen(str("g++ " + workDirectory + "/*.cpp -o " + workDirectory + "/bin"),
+    event = subprocess.Popen(str("g++ " + workDirectory + "/*.cpp -Wall -Wextra -Werror -o " + workDirectory + "/bin"),
                              shell = True, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     out, err = event.communicate()
     error = []
@@ -38,7 +38,7 @@ def compileFiles(user):
     if (err == ''):
         success = True
     else:
-        error[0] = err
+        error.append(err)
     return (dict[('success', success), ('warning', warning), ('error', error)])
 
 def doEverything(user, fileList):
