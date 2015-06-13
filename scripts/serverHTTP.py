@@ -39,7 +39,9 @@ def compileFiles(user):
         success = True
     else:
         error.append(err)
-    return (dict[('success', success), ('warning', warning), ('error', error)])
+    larousse = {'success': success, 'warning': warning, 'error': error}
+    print larousse    
+    return (larousse)
 
 def doEverything(user, fileList):
     directoryUser(user)
@@ -56,7 +58,11 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
                 length = int(self.headers.getheader('content-length'))
                 data = json.loads(self.rfile.read(length))
                 response = doEverything(data["userId"], data["files"])
-                json.dump(response, self.wfile)
+                ##response = json.dump(response, self.wfile)
+                response = json.dumps(response)
+                self.send_response(0)
+                self.end_headers()
+                self.wfile.write(response)
             else:
                 data = {}
                 self.send_response(200)
@@ -125,5 +131,8 @@ if __name__ == '__main__':
     server = SimpleHttpServer(args.ip, args.port)
     print 'HTTP Server Running...........'
     server.start()
+    print 'toto'
     server.waitForThread()
+    print 'tutu'
     server.stop()
+    print 'tata'
