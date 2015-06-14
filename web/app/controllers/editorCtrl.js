@@ -6,7 +6,11 @@ app.controller('editorCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.comp = function () {
         var code = editor.getSession().getValue();
         console.log(code);
-        $http.post("http://localhost:8080/code", {code: code}).success();
+        $http.post("http://localhost:8080/code", {code: code}).success(function() {
+	    toastr.success("Compilation success");
+	}).error(function() {
+	    toastr.error("Compilation fail");
+	});
     };
     $scope.dest = function() {
         editor.getSession().setValue("");
