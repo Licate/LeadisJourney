@@ -60,12 +60,12 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
                 response = doEverything(data["userId"], data["files"])
                 ##response = json.dump(response, self.wfile)
                 response = json.dumps(response)
-                self.send_response(0)
+                self.send_response(200)
                 self.end_headers()
                 self.wfile.write(response)
             else:
                 data = {}
-                self.send_response(200)
+                self.send_response(415)
                 self.end_headers()
         else:
             self.send_response(403)
@@ -131,7 +131,7 @@ if __name__ == '__main__':
     server = SimpleHttpServer(args.ip, args.port)
     print 'HTTP Server Running...........'
     server.start()
-    print 'toto'
+    print 'Server start'
     server.waitForThread()
     print 'tutu'
     server.stop()

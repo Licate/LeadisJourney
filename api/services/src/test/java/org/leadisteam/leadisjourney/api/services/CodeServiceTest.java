@@ -7,7 +7,7 @@ import org.leadisteam.leadisjourney.api.core.CompileResponse;
 import static org.junit.Assert.*;
 
 public class CodeServiceTest {
-    private final String ValidUserCode = "int main() { printf(\"test\\n\"); return 0; }";
+    private final String ValidUserCode = "int main() { return 0; }";
     private final String InValidUserCode = "I'm devil code !";
     private CodeService codeService;
 
