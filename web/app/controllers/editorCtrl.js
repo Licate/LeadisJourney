@@ -6,10 +6,13 @@ app.controller('editorCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.comp = function () {
         var code = editor.getSession().getValue();
         console.log(code);
-        $http.post("http://localhost:8080/code", {code: code}).success(function() {
-	    toastr.success("Compilation success");
+        $http.post("http://localhost:8080/code", {code: code}).success(function(data) {
+	    if (data.success)
+		toastr.success("Compilation success");
+	    else
+		toastr.warning("Compilation fail");
 	}).error(function() {
-	    toastr.error("Compilation fail");
+	    toastr.error("An error occured");
 	});
     };
     $scope.dest = function() {
