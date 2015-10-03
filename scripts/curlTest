@@ -1,1 +1,0 @@
-curl -X POST http://localhost:8080/compile -d {"id_user":1, "code":["test"]} -H "Content-Type: compilator/json"
