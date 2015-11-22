@@ -1,8 +1,20 @@
 package org.leadisteam.leadisjourney.api.core;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Account")
 public class Account {
 
-	private String id;
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private Group group;
 	private User user;
 	private Boolean isAdmin;
@@ -10,7 +22,7 @@ public class Account {
 	private String password;
 	//add ExerciceValidated:Exercice[0:*]
 	
-	Account(User user, Group group, String id, Boolean isAdmin, String password, String pseudo){
+	Account(User user, Group group, int id, Boolean isAdmin, String password, String pseudo){
 		this.setUser(user);
 		this.setGroup(group);
 		this.setId(id);
@@ -24,11 +36,11 @@ public class Account {
 		this.setGroup(group);
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

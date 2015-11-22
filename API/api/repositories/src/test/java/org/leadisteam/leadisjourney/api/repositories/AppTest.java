@@ -1,4 +1,4 @@
-package org.repositories;
+package org.leadisteam.leadisjourney.api.repositories;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
