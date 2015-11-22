@@ -11,5 +11,6 @@
     <module>rest</module>
     <module>core</module>
     <module>services</module>
+    <module>repositories</module>
   </modules>
 </project>
