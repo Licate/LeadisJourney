@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>org.leadisteam.leadisjourney</groupId>
 	<artifactId>repositories</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>repositories</name>
 	<url>http://maven.apache.org</url>
 	<properties>
