@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6F716DDB-0AD8-4450-9245-471D727D0A2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49C2B92A-6F65-4FDA-94E2-3F07CD8B8130}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LeadisTeam.LeadisJourney.Api", "src\LeadisTeam.LeadisJourney.Api\LeadisTeam.LeadisJourney.Api.xproj", "{C657E4ED-6EE5-41E2-8520-DE1CFA698C5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C657E4ED-6EE5-41E2-8520-DE1CFA698C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C657E4ED-6EE5-41E2-8520-DE1CFA698C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C657E4ED-6EE5-41E2-8520-DE1CFA698C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C657E4ED-6EE5-41E2-8520-DE1CFA698C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C657E4ED-6EE5-41E2-8520-DE1CFA698C5F} = {6F716DDB-0AD8-4450-9245-471D727D0A2E}
+	EndGlobalSection
+EndGlobal
