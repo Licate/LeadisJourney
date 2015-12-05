@@ -8,9 +8,7 @@
 		<artifactId>api</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.leadisteam.leadisjourney</groupId>
 	<artifactId>repositories</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>repositories</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -49,11 +47,9 @@
 			<version>4.2.3.RELEASE</version>
 		</dependency>
 		<dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-context</artifactId>
-	<version>4.2.3.RELEASE</version>
-</dependency>
-		
-
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.2.3.RELEASE</version>
+		</dependency>
 	</dependencies>
 </project>

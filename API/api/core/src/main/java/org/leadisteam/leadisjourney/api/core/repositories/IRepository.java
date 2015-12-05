@@ -2,11 +2,11 @@ package org.leadisteam.leadisjourney.api.core.repositories;
 
 import java.util.List;
 
-//Interface générique
+//Generic Interface
 public interface IRepository<TModel> {
 
-	public void persist(TModel obj); // Mettre un objet dans son repository
-	public TModel retrieve(int id); // Trouver l'objet dans le repository
-	public List<TModel> retrieveAll(); // Récupère l'ensemble des objets
-	public void delete(TModel obj); // Delete l'objet
+	public void persist(TModel obj); // Put an object in its repository
+	public TModel retrieve(int id); // Find an object in repository
+	public List<TModel> retrieveAll(); // Retrieve all the objects
+	public void delete(TModel obj); // Delete the object
 }
