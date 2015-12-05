@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
+
 
 namespace LeadisTeam.LeadisJourney.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class AccountController : Controller
     {
         // GET: api/values
         [HttpGet]
