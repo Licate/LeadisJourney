@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using LeadisTeam.LeadisJourney.Api.Ioc;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,10 +24,16 @@ namespace LeadisTeam.LeadisJourney.Api
         public IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
+
+			// Adding ioc Autofac
+	        var containerBuilder = new ContainerBuilder();
+	        containerBuilder.RegisterModule<AutofacModule>();
+			containerBuilder.Populate(services);
+	        return containerBuilder.Build().Resolve<IServiceProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +42,8 @@ namespace LeadisTeam.LeadisJourney.Api
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseIISPlatformHandler();
+			// disable because we not target IIS engine
+            //app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
 
