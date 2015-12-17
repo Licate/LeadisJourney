@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using LeadisTeam.LeadisJourney.Core.Entities;
+using LeadisTeam.LeadisJourney.Core.Repositories;
 using NHibernate;
 using NHibernate.Linq;
 

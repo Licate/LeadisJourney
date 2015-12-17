@@ -1,10 +1,10 @@
 ﻿using System;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using LeadisTeam.LeadisJourney.Core.Repositories;
 using NHibernate;
 
 namespace LeadisTeam.LeadisJourney.Repositories {
-	//Pseudo instance de connexion à la DB (si elle plante, cela n'affecte pas les autres)
 	public class DbContext : IUnitOfWork { 
 		private static FluentConfiguration _fluentConfiguration;
 		private static ISessionFactory _sessionFactory;
@@ -23,15 +23,12 @@ namespace LeadisTeam.LeadisJourney.Repositories {
 				.ConnectionString(c => c.Host(host)
 					.Port(port)
 					.Database(database)
-					// ça faudra pas le laisser comme ça...
 					.Username(username)
-					// ça non plus !
 					.Password(password)));
-			//Map Account (avec ses champs et tout) dans ma DB
 		}
 
-		protected static void MappingsConfiguration(Action<MappingConfiguration> mappings) {
-			_fluentConfiguration.Mappings(mappings);
+		protected static  FluentConfiguration MappingsConfiguration(Action<MappingConfiguration> mappings) {
+			return _fluentConfiguration.Mappings(mappings);
 		}
 
 		public void BeginTransaction() {

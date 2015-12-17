@@ -1,4 +1,6 @@
-﻿namespace LeadisTeam.LeadisJourney.Core.Entities
+﻿using System.Collections.Generic;
+
+namespace LeadisTeam.LeadisJourney.Core.Entities
 {
     public class Exercice : IEntity
     {
@@ -7,8 +9,8 @@
         public Source Source { get; set; }
         public int Position { get; set; }
         //Associated tutorial(s)
-        public Tutorial Tutorial { get; set; }
+        public IList<Tutorial> Tutorials { get; set; }
         //The potential help doc
-        public Source Help { get; set; }
+        public IList<Source> Help { get; set; }
     }
 }
