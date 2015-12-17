@@ -29,11 +29,17 @@ namespace LeadisTeam.LeadisJourney.Api
             // Add framework services.
             services.AddMvc();
 
+#if DNX451
 			// Adding ioc Autofac
-	        var containerBuilder = new ContainerBuilder();
-	        containerBuilder.RegisterModule<AutofacModule>();
+			var containerBuilder = new ContainerBuilder();
 			containerBuilder.Populate(services);
-	        return containerBuilder.Build().Resolve<IServiceProvider>();
+
+			containerBuilder.RegisterModule<AutofacModule>();
+			var container = containerBuilder.Build();
+			return container.Resolve<IServiceProvider>();
+#else
+	        return services.BuildServiceProvider();
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using LeadisTeam.LeadisJourney.Repositories.Map;
+﻿using LeadisTeam.LeadisJourney.Core.Repositories;
+using LeadisTeam.LeadisJourney.Repositories.Map;
 using NHibernate.Tool.hbm2ddl;
 
 namespace LeadisTeam.LeadisJourney.Repositories {

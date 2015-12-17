@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LeadisTeam.LeadisJourney.Core.Repositories;
 using Microsoft.AspNet.Mvc;
 
 
@@ -8,7 +9,10 @@ namespace LeadisTeam.LeadisJourney.Api.Controllers
     public class AccountController : Controller
     {
         // GET: api/values
-        [HttpGet]
+	    public AccountController(IUnitOfWork unitOfWork) {
+	    }
+
+	    [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
