@@ -10,7 +10,7 @@ namespace LeadisTeam.LeadisJourney.Repositories.Map {
             Map(c => c.IsOwner);
             HasMany(c => c.UserExperience);
             HasManyToMany(c => c.Group);
-            HasOne(c => c.User);
+            References(c => c.User, "Id").Unique();
             Table("accounts");
         }
     }

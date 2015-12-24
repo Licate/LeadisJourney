@@ -10,6 +10,7 @@ namespace LeadisTeam.LeadisJourney.Repositories.Map
     public class UserMap : ClassMap<User> {
         public UserMap() {
             Id(user => user.Id).GeneratedBy.Increment();
+            HasOne(c => c.Account).PropertyRef(c => c.User);
             Map(c => c.FirstName);
             Map(c => c.Name);
             Table("users");
