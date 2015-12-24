@@ -7,12 +7,12 @@ using LeadisTeam.LeadisJourney.Core.Entities;
 
 namespace LeadisTeam.LeadisJourney.Repositories.Map
 {
-    public class SourceMap : ClassMap<Source> {
-        public SourceMap() {
+    public class ExerciceSourceMap : ClassMap<ExerciceSource> {
+        public ExerciceSourceMap() {
             Id(source => source.Id).GeneratedBy.Increment();
             Map(c => c.Content);
             Map(c => c.Type);
-            Table("sources");
+            Table("exerciceSources");
         }
     }
 }

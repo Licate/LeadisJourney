@@ -11,8 +11,8 @@ namespace LeadisTeam.LeadisJourney.Repositories.Map
 
         public ExerciceMap() {
             Id(exercice => exercice.Id).GeneratedBy.Increment();
-           References(c => c.Source);
-            References(c => c.Help);
+            HasOne(c => c.Source);
+            HasMany(c => c.Helps);
             Map(c => c.Position);
             Map(c => c.Title);
             HasMany(c => c.Tutorials);

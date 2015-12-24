@@ -6,7 +6,7 @@ namespace LeadisTeam.LeadisJourney.Core.Entities
     public class UserExperience : IEntity
     {
         public int Id { get; set; }
-        public User Creator { get; set; }
+        public Account Creator { get; set; }
         public DateTime CreationDate { get; set; }
         public string Code { get; set; }
 

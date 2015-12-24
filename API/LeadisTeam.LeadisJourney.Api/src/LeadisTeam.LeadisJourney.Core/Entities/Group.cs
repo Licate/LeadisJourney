@@ -6,6 +6,7 @@ namespace LeadisTeam.LeadisJourney.Core.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IList<User> Admins { get; set; }
+        public IList<Account> Admins { get; set; }
+        public IList<Account> Members { get; set;  }
     }
 }

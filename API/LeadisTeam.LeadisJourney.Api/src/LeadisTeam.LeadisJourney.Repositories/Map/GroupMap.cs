@@ -10,7 +10,8 @@ namespace LeadisTeam.LeadisJourney.Repositories.Map
     public class GroupMap : ClassMap<Group> {
         public GroupMap() {
             Id(group => group.Id).GeneratedBy.Increment();
-            HasMany(c => c.Admins);
+            HasManyToMany(c => c.Admins);
+            HasManyToMany(c => c.Members);
             Map(c => c.Name);
             Table("groups");
         }

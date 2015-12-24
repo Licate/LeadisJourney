@@ -8,8 +8,8 @@ namespace LeadisTeam.LeadisJourney.Repositories {
 			Configuration("localhost", 5432, "LeadisDB", "leadis", "2v9xYkpV5WX9");
 			MappingsConfiguration(c => 
 			c.FluentMappings.AddFromAssemblyOf<AccountMap>().AddFromAssemblyOf<UserMap>().AddFromAssemblyOf<TutorialMap>()
-            .AddFromAssemblyOf<SourceMap>().AddFromAssemblyOf<ExerciceMap>().AddFromAssemblyOf<GroupMap>()
-            .AddFromAssemblyOf<UserExperienceMap>()).ExposeConfiguration(
+            .AddFromAssemblyOf<ExerciceSourceMap>().AddFromAssemblyOf<ExerciceMap>().AddFromAssemblyOf<GroupMap>()
+            .AddFromAssemblyOf<UserExperienceMap>().AddFromAssemblyOf<TutorialSourceMap>().AddFromAssemblyOf<HelpSourceMap>()).ExposeConfiguration(
                 config =>
                 {
                     new SchemaExport(config).SetOutputFile("schema.sql").Execute(true, false, false);

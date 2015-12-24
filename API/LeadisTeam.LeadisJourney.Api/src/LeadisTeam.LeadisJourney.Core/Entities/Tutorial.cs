@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public Source Source { get; set; }
+        public TutorialSource Source { get; set; }
+        public Exercice Exercice { get; set; }
     }
 }

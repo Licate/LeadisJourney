@@ -10,7 +10,8 @@ namespace LeadisTeam.LeadisJourney.Repositories.Map
     public class TutorialMap : ClassMap<Tutorial> {
         public TutorialMap() {
             Id(tutorial => tutorial.Id).GeneratedBy.Increment();
-            References(c => c.Source);
+            References(c => c.Exercice);
+            HasOne(c => c.Source);
             Map(c => c.Title);
             Table("tutorials");
         }

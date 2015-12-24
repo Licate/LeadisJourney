@@ -7,8 +7,9 @@ namespace LeadisTeam.LeadisJourney.Repositories.Map {
             Id(account => account.Id).GeneratedBy.Increment();
             Map(c => c.Pseudo);
             Map(c => c.Email);
-            Map(c => c.IsAdmin);
-            References(c => c.Group);
+            Map(c => c.IsOwner);
+            HasMany(c => c.UserExperience);
+            HasManyToMany(c => c.Group);
             HasOne(c => c.User);
             Table("accounts");
         }
