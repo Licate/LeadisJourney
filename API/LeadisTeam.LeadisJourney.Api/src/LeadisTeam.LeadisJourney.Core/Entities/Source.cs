@@ -2,10 +2,10 @@
 {
     public class Source : IEntity
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         // Type of source (video, pdf etc)
-        public string Type { get; set; }
-        public string Content { get; set; }
+        public virtual string Type { get; set; }
+        public virtual string Content { get; set; }
 
         // CONTENT ??? Une string qui donne le path ??
     }

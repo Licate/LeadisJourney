@@ -8,6 +8,7 @@ namespace LeadisTeam.LeadisJourney.Repositories.Map {
             Map(c => c.Pseudo);
             Map(c => c.Email);
             Map(c => c.IsOwner);
+            Map(c => c.Password);
             HasMany(c => c.UserExperience);
             HasManyToMany(c => c.Group);
             References(c => c.User, "Id").Unique();

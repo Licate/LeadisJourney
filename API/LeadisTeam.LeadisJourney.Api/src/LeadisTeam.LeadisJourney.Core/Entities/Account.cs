@@ -7,12 +7,13 @@ namespace LeadisTeam.LeadisJourney.Core.Entities
 {
     public class Account : IEntity
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string Pseudo { get; set; }
-        public IList<Group> Group { get; set; }
-        public User User { get; set; }
-        public bool IsOwner { get; set; }
-        public IList<UserExperience> UserExperience { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string Pseudo { get; set; }
+        public virtual string Password { get; set; }
+        public virtual IList<Group> Group { get; set; }
+        public virtual User User { get; set; }
+        public virtual bool IsOwner { get; set; }
+        public virtual IList<UserExperience> UserExperience { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace LeadisTeam.LeadisJourney.Repositories
 
 	    public Repository(IUnitOfWork unitOfWork) {
 		    _dbContext = unitOfWork as DbContext;
+	        Session = _dbContext.Session;
 	    }
 
 	    public void Delete(TEntity entity) {

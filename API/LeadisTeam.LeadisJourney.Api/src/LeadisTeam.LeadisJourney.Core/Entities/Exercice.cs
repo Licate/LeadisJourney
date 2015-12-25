@@ -4,13 +4,13 @@ namespace LeadisTeam.LeadisJourney.Core.Entities
 {
     public class Exercice : IEntity
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public ExerciceSource Source { get; set; }
-        public int Position { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Title { get; set; }
+        public virtual ExerciceSource Source { get; set; }
+        public virtual int Position { get; set; }
         //Associated tutorial(s)
-        public IList<Tutorial> Tutorials { get; set; }
+        public virtual IList<Tutorial> Tutorials { get; set; }
         //The potential help docs
-        public IList<HelpSource> Helps { get; set; }
+        public virtual IList<HelpSource> Helps { get; set; }
     }
 }

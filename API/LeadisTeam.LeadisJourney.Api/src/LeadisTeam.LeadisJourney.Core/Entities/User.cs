@@ -3,9 +3,9 @@
     public class User : IEntity
     {
         //Only USER infos, all the other informations are in Account
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string FirstName { get; set; }
-        public Account Account { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

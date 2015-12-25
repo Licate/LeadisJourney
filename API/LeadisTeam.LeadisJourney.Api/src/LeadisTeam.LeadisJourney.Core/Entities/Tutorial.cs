@@ -2,9 +2,9 @@
 {
     public class Tutorial : IEntity
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public TutorialSource Source { get; set; }
-        public Exercice Exercice { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Title { get; set; }
+        public virtual TutorialSource Source { get; set; }
+        public virtual Exercice Exercice { get; set; }
     }
 }
