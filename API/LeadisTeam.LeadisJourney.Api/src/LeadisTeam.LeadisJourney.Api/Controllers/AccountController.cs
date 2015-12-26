@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using FluentNHibernate.Mapping;
 using LeadisTeam.LeadisJourney.Api.Models;
 using LeadisTeam.LeadisJourney.Core.Repositories;
 using LeadisTeam.LeadisJourney.Services.Contracts;
@@ -35,7 +34,6 @@ namespace LeadisTeam.LeadisJourney.Api.Controllers
         // POST api/values
         [HttpPost]
         public HttpOkResult Post([FromBody] CreateAccountModel res) {
-            _unitOfWork.BeginTransaction();
             _accountService.Create(res.Pseudo, res.Email, res.Name, res.FirstName, res.Password);
             _unitOfWork.Commit();
             return Ok();

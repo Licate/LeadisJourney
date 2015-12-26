@@ -1,6 +1,8 @@
-﻿namespace LeadisTeam.LeadisJourney.Core.Repositories {
-    public interface IUnitOfWork {
-        void BeginTransaction();
-        void Commit();
-    }
+﻿using System;
+
+namespace LeadisTeam.LeadisJourney.Core.Repositories {
+	public interface IUnitOfWork : IDisposable {
+		void Rollback();
+		void Commit();
+	}
 }

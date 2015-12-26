@@ -26,11 +26,7 @@
     },
 
     "frameworks": {
-        "dnx451": {
-            "dependencies": {
-
-            }
-        }
+        "dnx451": { }
     },
 
     "exclude": [

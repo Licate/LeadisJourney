@@ -1,34 +1,59 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using LeadisTeam.LeadisJourney.Core.Entities;
 using LeadisTeam.LeadisJourney.Core.Repositories;
+using LeadisTeam.LeadisJourney.Repositories.Context;
 using NHibernate;
 using NHibernate.Linq;
 
 namespace LeadisTeam.LeadisJourney.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : IEntity {
-	    protected ISession Session;
-	    private DbContext _dbContext;
+    public class Repository<TEntity> : IPersistRepository<TEntity>, IReadOnlyRepository<TEntity> where TEntity : IEntity {
+	    private readonly ISession _session;
 
-	    public Repository(IUnitOfWork unitOfWork) {
-		    _dbContext = unitOfWork as DbContext;
-	        Session = _dbContext.Session;
+	    public Repository(DbContext dbContext) {
+		    if (dbContext == null) {
+			    throw new ArgumentNullException(nameof(dbContext));
+		    }
+		    _session = dbContext.Session;
+	    }
+
+	    public void Save(TEntity entity) {
+		    _session.SaveOrUpdate(entity);
+	    }
+
+	    public void Save(IEnumerable<TEntity> entities) {
+		    foreach (var entity in entities) {
+			    _session.SaveOrUpdate(entity);
+		    }
 	    }
 
 	    public void Delete(TEntity entity) {
-            Session.Delete(entity);
-        }
+		    _session.Delete(entity);
+	    }
 
-        public IQueryable<TEntity> GetAll() {
-            return Session.Query<TEntity>();
-        }
+	    public void Delete(IEnumerable<TEntity> entities) {
+		    foreach (var entity in entities) {
+			    _session.Delete(entity);
+		    }
+	    }
 
-        public TEntity GetById(int id) {
-            return Session.Get<TEntity>(id);
-        }
+	    public IQueryable<TEntity> All() {
+		    return _session.Query<TEntity>();
+	    }
 
-        public void Save(TEntity entity) {
-            Session.SaveOrUpdate(entity);
-        }
+	    public IQueryable<TEntity> FilterBy(Expression<Func<TEntity, bool>> expression) {
+		    return All().Where(expression).AsQueryable();
+	    }
+
+	    public TEntity FindBy(int id) {
+		    return _session.Get<TEntity>(id);
+	    }
+
+	    public TEntity FindBy(Expression<Func<TEntity, bool>> expression) {
+			return FilterBy(expression).SingleOrDefault();
+		}
     }
 }
