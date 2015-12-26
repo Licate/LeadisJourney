@@ -71,7 +71,6 @@ namespace LeadisTeam.LeadisJourney.Repositories.Context {
 		}
 		#endregion
 
-
 		#region IUnitOfWork
 		public void Rollback() {
 			if (_transaction.IsActive) {

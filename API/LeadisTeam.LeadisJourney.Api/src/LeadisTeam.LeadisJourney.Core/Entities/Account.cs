@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LeadisTeam.LeadisJourney.Core.Entities
 {
-    public class Account : IEntity
+    public class Account : IEntity, IEntityState
     {
         public virtual int Id { get; set; }
         public virtual string Email { get; set; }
@@ -15,5 +15,6 @@ namespace LeadisTeam.LeadisJourney.Core.Entities
         public virtual User User { get; set; }
         public virtual bool IsOwner { get; set; }
         public virtual IList<UserExperience> UserExperience { get; set; }
+        public virtual EntityState EntityState { get; set; }
     }
 }
