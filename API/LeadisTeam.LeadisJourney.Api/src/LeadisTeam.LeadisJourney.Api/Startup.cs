@@ -34,7 +34,7 @@ namespace LeadisTeam.LeadisJourney.Api
 			var containerBuilder = new ContainerBuilder();
 			containerBuilder.Populate(services);
 
-			containerBuilder.RegisterModule<AutofacModule>();
+			containerBuilder.RegisterModule<GlobalRegistration>();
 			var container = containerBuilder.Build();
 			return container.Resolve<IServiceProvider>();
 #else
