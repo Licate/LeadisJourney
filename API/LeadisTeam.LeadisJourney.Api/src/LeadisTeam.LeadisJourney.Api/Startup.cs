@@ -2,11 +2,15 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using LeadisTeam.LeadisJourney.Api.Ioc;
+using LeadisTeam.LeadisJourney.Api.Models;
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Diagnostics;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace LeadisTeam.LeadisJourney.Api
 {
@@ -50,6 +54,24 @@ namespace LeadisTeam.LeadisJourney.Api
 
 			// disable because we not target IIS engine
             //app.UseIISPlatformHandler();
+            app.UseExceptionHandler(appBuilder => {
+                appBuilder.Use(async (context, next) => {
+                    var error = context.Features[typeof (IExceptionHandlerFeature)] as IExceptionHandlerFeature;
+                    if (error != null && error.Error != null) {
+                        context.Response.StatusCode = 500;
+                        context.Response.ContentType = "application/json";
+                        await context.Response.WriteAsync(
+                            JsonConvert.SerializeObject(
+                                new HandleErrorsModel {
+                                    Title = "An error occured !",
+                                    Code = 500,
+                                    Message = error.Error.Message
+                                }));
+                    }
+                    else
+                        await next();
+                });
+            });
 
             app.UseStaticFiles();
 
